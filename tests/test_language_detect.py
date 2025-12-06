@@ -16,7 +16,6 @@ from dateparser.custom_language_detection.langdetect import (
     detect_languages as lang_detect_detect_languages,
 )
 from dateparser.date import DateDataParser
-from dateparser.search import search_dates
 
 detect_languages = Mock()
 detect_languages.return_value = ["en"]
@@ -54,7 +53,7 @@ class CustomLangDetectParserTest(unittest.TestCase):
         result = lang_detect_detect_languages(dt_string, confidence_threshold)
         assert result == []
 
-    # Mock test for parse, search_dates and DateDataParser
+    # Mock test for parse and DateDataParser
 
     detect_languages = Mock()
     detect_languages.return_value = ["en"]
@@ -91,28 +90,4 @@ class CustomLangDetectParserTest(unittest.TestCase):
         self, dt_string, expected_date_obj
     ):
         self.when_date_is_parsed_using_with_datedataparser(dt_string)
-        self.then_date_obj_exactly_is(expected_date_obj)
-
-    # search_date
-
-    def when_date_is_parsed_using_with_search_dates(self, dt_string):
-        self.result = search_dates(
-            dt_string, detect_languages_function=detect_languages
-        )
-
-    @parameterized.expand(
-        [
-            param(
-                "January 3, 2017 - February 1st",
-                [
-                    ("January 3, 2017", datetime(2017, 1, 3, 0, 0)),
-                    ("February 1st", datetime(2017, 2, 1, 0, 0)),
-                ],
-            ),
-        ]
-    )
-    def test_custom_language_detect_mock_search_dates(
-        self, dt_string, expected_date_obj
-    ):
-        self.when_date_is_parsed_using_with_search_dates(dt_string)
         self.then_date_obj_exactly_is(expected_date_obj)

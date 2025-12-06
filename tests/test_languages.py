@@ -10,8 +10,6 @@ from dateparser.conf import apply_settings, settings
 from dateparser.date import DateDataParser
 from dateparser.languages import Locale, default_loader
 from dateparser.languages.validation import LanguageValidator
-from dateparser.search import search_dates
-from dateparser.search.detection import AutoDetectLanguage, ExactLanguages
 from dateparser.utils import normalize_unicode
 from tests import BaseTestCase
 
@@ -2977,21 +2975,6 @@ class TestLanguageValidatorWhenInvalid(BaseTestCase):
         ddp = DateDataParser(languages=languages, settings=settings)
         result = ddp.get_date_data(date_string)
         assert result.date_obj == expected
-
-    @parameterized.expand(
-        [
-            param(
-                date_string="3 de marzo 2019",
-                settings={"DEFAULT_LANGUAGES": ["es"]},
-                expected=[("3 de marzo 2019", datetime(2019, 3, 3, 0, 0))],
-            ),
-        ]
-    )
-    def test_search_dates_settings_default_languages(
-        self, date_string, settings, expected
-    ):
-        result = search_dates(date_string, settings=settings)
-        assert result == expected
 
     @parameterized.expand(
         [param(date_string="RANDOM_WORD ", settings={"DEFAULT_LANGUAGES": ["en"]})]

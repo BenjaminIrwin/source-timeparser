@@ -198,30 +198,6 @@ You can also ignore parsing incomplete dates altogether by setting `STRICT_PARSI
 For more on handling incomplete dates, please look at :ref:`settings`.
 
 
-Search for Dates in Longer Chunks of Text
------------------------------------------
-
-.. warning:: Support for searching dates is really limited and needs a lot of improvement, we look forward to community's contribution to get better on that part. See ":ref:`contributing`".
-
-
-You can extract dates from longer strings of text. They are returned as list of tuples with text chunk containing the date and parsed datetime object.
-
-
-.. automodule:: dateparser.search
-   :members: search_dates
-   :noindex:
-
-Time Span Detection
--------------------
-
-The `search_dates` function can detect time spans from expressions like "past month", "last week", etc. When `RETURN_TIME_SPAN` is enabled, it returns start and end dates for the detected period.
-
-.. code-block:: python
-
-    >>> search_dates("Messages from the past month", settings={'RETURN_TIME_SPAN': True})
-    [('past month (start)', datetime.datetime(2024, 11, 7, 0, 0)), 
-     ('past month (end)', datetime.datetime(2024, 12, 7, 23, 59, 59, 999999))]
-
 Advanced Usage
 ==============
 If you need more control over what is being parser check the :ref:`settings` section as well as the :ref:`using-datedataparser` section.
