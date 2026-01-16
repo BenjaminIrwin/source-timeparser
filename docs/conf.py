@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# dateparser documentation build configuration file, created by
+# timeparser documentation build configuration file, created by
 # sphinx-quickstart on Tue Jul  9 22:26:36 2013.
 #
 # This file is execfile()d with the current directory set to its
@@ -13,7 +13,7 @@
 import os
 import sys
 
-import dateparser
+import timeparser
 
 # Get the project root dir, which is the parent dir of this
 cwd = os.getcwd()
@@ -53,9 +53,9 @@ copyright = "2014, Scrapinghub"
 # the built documents.
 #
 # The short X.Y version.
-version = dateparser.__version__
+version = timeparser.__version__
 # The full version, including alpha/beta/rc tags.
-release = dateparser.__version__
+release = timeparser.__version__
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -78,7 +78,7 @@ html_theme = "sphinx_rtd_theme"
 html_static_path = []
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "dateparserdoc"
+htmlhelp_basename = "timeparserdoc"
 
 
 # -- Options for LaTeX output ------------------------------------------
@@ -89,7 +89,7 @@ latex_elements = {}
 # (source start file, target name, title, author, documentclass
 # [howto/manual]).
 latex_documents = [
-    ("index", "dateparser.tex", "DateParser Documentation", "Scrapinghub", "manual"),
+    ("index", "timeparser.tex", "DateParser Documentation", "Scrapinghub", "manual"),
 ]
 
 
@@ -97,7 +97,7 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [("index", "dateparser", "DateParser Documentation", ["Scrapinghub"], 1)]
+man_pages = [("index", "timeparser", "DateParser Documentation", ["Scrapinghub"], 1)]
 
 
 # -- Options for Texinfo output ----------------------------------------
@@ -108,10 +108,10 @@ man_pages = [("index", "dateparser", "DateParser Documentation", ["Scrapinghub"]
 texinfo_documents = [
     (
         "index",
-        "dateparser",
+        "timeparser",
         "DateParser Documentation",
         "Scrapinghub",
-        "dateparser",
+        "timeparser",
         "One line description of project.",
         "Miscellaneous",
     ),
@@ -130,4 +130,4 @@ html_theme_options = {
     "titles_only": False,
 }
 
-html_logo = "../artwork/dateparser-logo.png"
+html_logo = "../artwork/timeparser-logo.png"

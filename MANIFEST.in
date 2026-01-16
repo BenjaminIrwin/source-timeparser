@@ -3,8 +3,8 @@ include CONTRIBUTING.rst
 include HISTORY.rst
 include LICENSE
 include README.rst
-include dateparser/data/dateparser_tz_cache.pkl
-include dateparser_data/settings.py
+include timeparser/data/timeparser_tz_cache.pkl
+include timeparser_data/settings.py
 include requirements.txt
 
 recursive-include tests *

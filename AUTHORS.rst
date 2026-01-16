@@ -7,7 +7,7 @@ contributors list really hard to maintain, so we have decided to stop updating
 this list.
 
 To see the people behind this code, you can run ``git shortlog -s -n`` or visit the
-contributions section in Github: https://github.com/scrapinghub/dateparser/graphs/contributors
+contributions section in Github: https://github.com/scrapinghub/timeparser/graphs/contributors
 
 We really appreciate **all the people that has contributed to this project with their
 time and ideas**. Special mention to **Waqas Shabir** (waqasshabbir), **Eugene Amirov**

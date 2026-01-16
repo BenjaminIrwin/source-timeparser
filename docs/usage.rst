@@ -4,17 +4,17 @@
 Using DateDataParser
 --------------------
 
-:func:`dateparser.parse` uses a default parser which tries to detect language
+:func:`timeparser.parse` uses a default parser which tries to detect language
 every time it is called and is not the most efficient way while parsing dates
 from the same source.
 
-:class:`DateDataParser <dateparser.date.DateDataParser>` provides an alternate and efficient way
+:class:`DateDataParser <timeparser.date.DateDataParser>` provides an alternate and efficient way
 to control language detection behavior.
 
-The instance of :class:`DateDataParser <dateparser.date.DateDataParser>` caches the found
+The instance of :class:`DateDataParser <timeparser.date.DateDataParser>` caches the found
 languages and will prioritize them when trying to parse the next string.
 
-:class:`dateparser.date.DateDataParser` can also be initialized with known languages:
+:class:`timeparser.date.DateDataParser` can also be initialized with known languages:
 
     >>> ddp = DateDataParser(languages=['de', 'nl'])
     >>> ddp.get_date_data('vr jan 24, 2014 12:49')

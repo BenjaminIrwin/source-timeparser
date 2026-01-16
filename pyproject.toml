@@ -4,7 +4,7 @@ commit = true
 tag = true
 
 [[tool.bumpversion.files]]
-filename = "dateparser/__init__.py"
+filename = "timeparser/__init__.py"
 
 [[tool.bumpversion.files]]
 filename = 'HISTORY.rst'
@@ -16,5 +16,5 @@ regex = true
 exclude = ["date_translation_data"]
 
 [tool.ruff.lint.per-file-ignores]
-"dateparser/data/__init__.py" = ["F401"]
-"dateparser/languages/__init__.py" = ["F401"]
+"timeparser/data/__init__.py" = ["F401"]
+"timeparser/languages/__init__.py" = ["F401"]

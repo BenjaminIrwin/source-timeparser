@@ -3,8 +3,8 @@ import warnings
 
 from parameterized import param, parameterized
 
-from dateparser.conf import apply_settings
-from dateparser.parser import _no_spaces_parser, _parser, time_parser, tokenizer
+from timeparser.conf import apply_settings
+from timeparser.parser import _no_spaces_parser, _parser, time_parser, tokenizer
 from tests import BaseTestCase
 
 

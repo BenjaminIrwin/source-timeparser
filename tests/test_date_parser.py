@@ -5,12 +5,12 @@ from unittest.mock import Mock, patch
 
 from parameterized import param, parameterized
 
-import dateparser.timezone_parser
-from dateparser.date import DateDataParser, date_parser
-from dateparser.date_parser import DateParser
-from dateparser.parser import _parse_absolute
-from dateparser.timezone_parser import StaticTzInfo
-from dateparser.utils import normalize_unicode
+import timeparser.timezone_parser
+from timeparser.date import DateDataParser, date_parser
+from timeparser.date_parser import DateParser
+from timeparser.parser import _parse_absolute
+from timeparser.timezone_parser import StaticTzInfo
+from timeparser.utils import normalize_unicode
 from tests import BaseTestCase
 
 
@@ -493,7 +493,7 @@ class TestDateParser(BaseTestCase):
             ),  # Trailing space
         ]
     )
-    def test_dateparser_should_return_tzaware_date_when_tz_info_present_in_date_string(
+    def test_timeparser_should_return_tzaware_date_when_tz_info_present_in_date_string(
         self, date_string, timezone_str, expected
     ):
         self.given_parser()
@@ -520,7 +520,7 @@ class TestDateParser(BaseTestCase):
             ),
         ]
     )
-    def test_dateparser_should_return_date_in_setting_timezone_if_timezone_info_present_in_datestring_and_in_settings(
+    def test_timeparser_should_return_date_in_setting_timezone_if_timezone_info_present_in_datestring_and_in_settings(
         self, date_string, setting_timezone, expected
     ):
         self.given_parser(settings={"TIMEZONE": setting_timezone})
@@ -1343,7 +1343,7 @@ class TestDateParser(BaseTestCase):
     def given_local_tz_offset(self, offset):
         self.add_patch(
             patch.object(
-                dateparser.timezone_parser,
+                timeparser.timezone_parser,
                 "local_tz_offset",
                 new=timedelta(seconds=3600 * offset),
             )
@@ -1365,7 +1365,7 @@ class TestDateParser(BaseTestCase):
         )
 
         self.date_parser = Mock(wraps=date_parser)
-        self.add_patch(patch("dateparser.date.date_parser", new=self.date_parser))
+        self.add_patch(patch("timeparser.date.date_parser", new=self.date_parser))
         self.parser = DateDataParser(*args, **kwds)
 
     def when_date_is_parsed(self, date_string):

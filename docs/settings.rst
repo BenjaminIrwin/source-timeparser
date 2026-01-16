@@ -3,9 +3,9 @@
 Settings
 ========
 
-`dateparser`'s parsing behavior can be configured by supplying settings as a dictionary to `settings` argument in :func:`dateparser.parse` or :class:`DateDataParser <dateparser.date.DateDataParser>` constructor.
+`timeparser`'s parsing behavior can be configured by supplying settings as a dictionary to `settings` argument in :func:`timeparser.parse` or :class:`DateDataParser <timeparser.date.DateDataParser>` constructor.
 
-.. note:: From `dateparser 1.0.0` when a setting with a wrong value is provided, a ``SettingValidationError`` is raised.
+.. note:: From `timeparser 1.0.0` when a setting with a wrong value is provided, a ``SettingValidationError`` is raised.
 
 
 All supported `settings` with their usage examples are given below:
@@ -29,7 +29,7 @@ Date Order
    >>> parse('le 02-03-2016')  # detects french, hence, uses DMY date order
    datetime.datetime(2016, 3, 2, 0, 0)
 
-.. note:: There's no language level default ``DATE_ORDER`` associated with `en` language. That's why it assumes ``MDY`` which is :obj:``settings <dateparser.conf.settings>`` default. If the language has a default ``DATE_ORDER`` associated, supplying custom date order will not be applied unless we set ``PREFER_LOCALE_DATE_ORDER`` to ``False``:
+.. note:: There's no language level default ``DATE_ORDER`` associated with `en` language. That's why it assumes ``MDY`` which is :obj:``settings <timeparser.conf.settings>`` default. If the language has a default ``DATE_ORDER`` associated, supplying custom date order will not be applied unless we set ``PREFER_LOCALE_DATE_ORDER`` to ``False``:
 
     >>> parse('le 02-03-2016', settings={'DATE_ORDER': 'MDY'})
     datetime.datetime(2016, 3, 2, 0, 0)  # MDY didn't apply
@@ -66,7 +66,7 @@ Handling Incomplete Dates
 
 ``PREFER_DAY_OF_MONTH``: it comes handy when the date string is missing the day part. It defaults to ``current`` and can be ``first`` and ``last`` denoting first and last day of months respectively as values:
 
-    >>> from dateparser import parse
+    >>> from timeparser import parse
     >>> parse('December 2015')  # default behavior
     datetime.datetime(2015, 12, 16, 0, 0)
     >>> parse('December 2015', settings={'PREFER_DAY_OF_MONTH': 'last'})
@@ -76,7 +76,7 @@ Handling Incomplete Dates
 
 ``PREFER_MONTH_OF_YEAR``: Similarly, another useful thing when the date string is missing the month part. It defaults to ``current`` and can be ``first`` and ``last`` denoting first and last month of year respectively as values:
 
-    >>> from dateparser import parse
+    >>> from timeparser import parse
     >>> parse("2015") # default behavior
     datetime.datetime(2015, 3, 27, 0, 0)
     >>> parse("2015", settings={"PREFER_MONTH_OF_YEAR": "last"})
@@ -90,7 +90,7 @@ Handling Incomplete Dates
 
 If date string is missing some part, this option ensures consistent results depending on the ``past`` or ``future`` preference, for example, assuming current date is `June 16, 2015`:
 
-    >>> from dateparser import parse
+    >>> from timeparser import parse
     >>> parse('March')
     datetime.datetime(2015, 3, 16, 0, 0)
     >>> parse('March', settings={'PREFER_DATES_FROM': 'future'})
@@ -104,7 +104,7 @@ Defaults to the current date and time.
 
 For example, assuming current date is `June 16, 2015`:
 
-    >>> from dateparser import parse
+    >>> from timeparser import parse
     >>> parse('14:30')
     datetime.datetime(2015, 6, 16, 14, 30)
     >>> parse('14:30', settings={'RELATIVE_BASE': datetime.datetime(2020, 1, 1)})
@@ -154,16 +154,16 @@ Language Detection
 
 ``SKIP_TOKENS``: it is a ``list`` of tokens to discard while detecting language. Defaults to ``['t']`` which skips T in iso format datetime string .e.g. ``2015-05-02T10:20:19+0000``.:
 
-    >>> from dateparser.date import DateDataParser
+    >>> from timeparser.date import DateDataParser
     >>> DateDataParser(settings={'SKIP_TOKENS': ['de']}).get_date_data(u'27 Haziran 1981 de')  # Turkish (at 27 June 1981)
     DateData(date_obj=datetime.datetime(1981, 6, 27, 0, 0), period='day', locale='tr')
 
 ``NORMALIZE``: applies unicode normalization (removing accents, diacritics...) when parsing the words. Defaults to True.
 
-    >>> dateparser.parse('4 decembre 2015', settings={'NORMALIZE': False})
+    >>> timeparser.parse('4 decembre 2015', settings={'NORMALIZE': False})
     # It doesn't work as the expected input should be '4 décembre 2015'
 
-    >>> dateparser.parse('4 decembre 2015', settings={'NORMALIZE': True})
+    >>> timeparser.parse('4 decembre 2015', settings={'NORMALIZE': True})
     datetime.datetime(2015, 12, 4, 0, 0)
 
 
@@ -173,7 +173,7 @@ Default Languages
 ``DEFAULT_LANGUAGES``: It is a ``list`` of language codes in ISO 639 that will be used as default
 languages for parsing when language detection fails. eg. ["en", "fr"]:
 
-    >>> from dateparser import parse
+    >>> from timeparser import parse
     >>> parse('3 de marzo de 2020', settings={'DEFAULT_LANGUAGES': ["es"]})
 
 .. note:: When using this setting, these languages will be tried after trying with the detected languages with no success. It is especially useful when using ``detect_languages_function``.
@@ -183,7 +183,7 @@ Optional language detection
 
 ``LANGUAGE_DETECTION_CONFIDENCE_THRESHOLD``: defaults to ``0.5``. It is a ``float`` of minimum required confidence for the custom language detection:
 
-    >>> from dateparser import parse
+    >>> from timeparser import parse
     >>> parse('3 de marzo de 2020', settings={'LANGUAGE_DETECTION_CONFIDENCE_THRESHOLD': 0.5}, detect_languages_function=detect_languages)
 
 
@@ -214,9 +214,9 @@ The following parsers exist:
     current date and time (e.g. “1 day ago”, “in 2 weeks”).
 
 -   ``'custom-formats'``: Parses dates that match one of the date formats in
-    the list of the ``date_formats`` parameter of :func:`dateparser.parse` or
+    the list of the ``date_formats`` parameter of :func:`timeparser.parse` or
     :meth:`DateDataParser.get_date_data
-    <dateparser.date.DateDataParser.get_date_data>`.
+    <timeparser.date.DateDataParser.get_date_data>`.
 
 -   ``'absolute-time'``: Parses dates and times expressed in absolute form
     (e.g. “May 4th”, “1991-05-17”). It takes into account settings such as
@@ -228,12 +228,12 @@ The following parsers exist:
     can produce false positives frequently.
 
 
-:data:`dateparser.settings.default_parsers` contains the default value of
+:data:`timeparser.settings.default_parsers` contains the default value of
 ``PARSERS`` (the list above, in that order) and can be used to write code that
 changes the parsers to try without skipping parsers that may be added to
 Dateparser in the future. For example, to ignore relative times:
 
-    >>> from dateparser_data.settings import default_parsers
+    >>> from timeparser_data.settings import default_parsers
     >>> parsers = [parser for parser in default_parsers if parser != 'relative-time']
     >>> parse('today', settings={'PARSERS': parsers})
 

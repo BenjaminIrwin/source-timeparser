@@ -1,29 +1,29 @@
 ====================================================
-dateparser -- python parser for human readable dates
+timeparser -- python parser for human readable dates
 ====================================================
 
-.. image:: https://img.shields.io/pypi/dm/dateparser
-   :target: https://pypi.python.org/pypi/dateparser
+.. image:: https://img.shields.io/pypi/dm/timeparser
+   :target: https://pypi.python.org/pypi/timeparser
    :alt: pypi downloads
 
-.. image:: https://img.shields.io/pypi/v/dateparser.svg
-   :target: https://pypi.python.org/pypi/dateparser
+.. image:: https://img.shields.io/pypi/v/timeparser.svg
+   :target: https://pypi.python.org/pypi/timeparser
    :alt: pypi version
 
-.. image:: https://codecov.io/gh/scrapinghub/dateparser/branch/master/graph/badge.svg
-   :target: https://codecov.io/gh/scrapinghub/dateparser
+.. image:: https://codecov.io/gh/scrapinghub/timeparser/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/scrapinghub/timeparser
    :alt: Code Coverage
 
-.. image:: https://github.com/scrapinghub/dateparser/workflows/Build/badge.svg
-   :target: https://github.com/scrapinghub/dateparser/actions
+.. image:: https://github.com/scrapinghub/timeparser/workflows/Build/badge.svg
+   :target: https://github.com/scrapinghub/timeparser/actions
    :alt: Github Build
 
-.. image:: https://readthedocs.org/projects/dateparser/badge/?version=latest
-   :target: http://dateparser.readthedocs.org/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/timeparser/badge/?version=latest
+   :target: http://timeparser.readthedocs.org/en/latest/?badge=latest
    :alt: Documentation Status
 
 
-`dateparser` provides modules to easily parse localized dates in almost
+`timeparser` provides modules to easily parse localized dates in almost
 any string formats commonly found on web pages.
 
 
@@ -31,7 +31,7 @@ Documentation
 =============
 
 This documentation is built automatically and can be found on
-`Read the Docs <https://dateparser.readthedocs.org/en/latest/>`_.
+`Read the Docs <https://timeparser.readthedocs.org/en/latest/>`_.
 
 
 .. include:: introduction.rst

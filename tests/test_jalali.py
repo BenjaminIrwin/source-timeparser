@@ -6,8 +6,8 @@ from datetime import datetime
 
 from parameterized import param, parameterized
 
-from dateparser.calendars.jalali import JalaliCalendar
-from dateparser.calendars.jalali_parser import PersianDate, jalali_parser
+from timeparser.calendars.jalali import JalaliCalendar
+from timeparser.calendars.jalali_parser import PersianDate, jalali_parser
 from tests import BaseTestCase
 
 

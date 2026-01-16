@@ -3,8 +3,8 @@ from datetime import datetime, tzinfo
 import pytest
 from parameterized import param, parameterized
 
-from dateparser import DateDataParser, parse
-from dateparser.conf import SettingValidationError, apply_settings, settings
+from timeparser import DateDataParser, parse
+from timeparser.conf import SettingValidationError, apply_settings, settings
 from tests import BaseTestCase
 
 

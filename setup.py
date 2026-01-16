@@ -3,7 +3,7 @@ import re
 from setuptools import find_packages, setup
 
 __version__ = re.search(
-    r"__version__.*\s*=\s*[\"]([^\"]+)[\"]", open("dateparser/__init__.py").read()
+    r"__version__.*\s*=\s*[\"]([^\"]+)[\"]", open("timeparser/__init__.py").read()
 ).group(1)
 
 introduction = re.sub(
@@ -16,15 +16,15 @@ history = re.sub(
 )
 
 setup(
-    name="dateparser",
+    name="timeparser",
     version=__version__,
     description="Date parsing library designed to parse dates from HTML pages",
     long_description=introduction + "\n\n" + history,
     author="Scrapinghub",
     author_email="opensource@zyte.com",
-    url="https://github.com/scrapinghub/dateparser",
+    url="https://github.com/scrapinghub/timeparser",
     project_urls={
-        "History": "https://dateparser.readthedocs.io/en/latest/history.html",
+        "History": "https://timeparser.readthedocs.io/en/latest/history.html",
     },
     packages=find_packages(exclude=("tests", "tests.*")),
     include_package_data=True,
@@ -35,7 +35,7 @@ setup(
         "tzlocal>=0.2",
     ],
     entry_points={
-        "console_scripts": ["dateparser-download = dateparser_cli.cli:entrance"],
+        "console_scripts": ["timeparser-download = timeparser_cli.cli:entrance"],
     },
     extras_require={
         "calendars": ["convertdate>=2.2.1", "hijridate"],
@@ -44,7 +44,7 @@ setup(
     },
     license="BSD",
     zip_safe=False,
-    keywords="dateparser",
+    keywords="timeparser",
     python_requires=">=3.8",  # Python 3.8 is required for fuzzing
     classifiers=[
         "Development Status :: 5 - Production/Stable",

@@ -6,9 +6,9 @@ from unittest.mock import Mock, patch
 from parameterized import param, parameterized
 from pytz import timezone
 
-import dateparser.timezone_parser
-from dateparser import parse
-from dateparser.timezone_parser import (
+import timeparser.timezone_parser
+from timeparser import parse
+from timeparser.timezone_parser import (
     StaticTzInfo,
     get_local_tz_offset,
     pop_tz_offset_from_string,
@@ -154,7 +154,7 @@ class TestLocalTZOffset(BaseTestCase):
         self.assertEqual(delta, self.timezone_offset)
 
     def given_time(self, utc_dt_string, local_dt_string):
-        datetime_cls = dateparser.timezone_parser.datetime
+        datetime_cls = timeparser.timezone_parser.datetime
         if not isinstance(datetime_cls, Mock):
             datetime_cls = Mock(wraps=datetime)
         utc_dt_obj = datetime.strptime(utc_dt_string, "%Y-%m-%d %H:%M").replace(
@@ -168,7 +168,7 @@ class TestLocalTZOffset(BaseTestCase):
             return local_dt_obj
 
         datetime_cls.now = Mock(side_effect=_dt_now)
-        self.add_patch(patch("dateparser.timezone_parser.datetime", new=datetime_cls))
+        self.add_patch(patch("timeparser.timezone_parser.datetime", new=datetime_cls))
 
 
 class TestTimeZoneConversion(BaseTestCase):

@@ -32,12 +32,12 @@ Improvements:
 - Check for derived types for configuration (#1223)
 - Parse some abbreviated strings as relative dates (#1219)
 - Migrate from hijri-converter to hijridate (#1211)
-- Fixed ClusterFuzz build error by adding dateparser.data as a binary (#1208)
+- Fixed ClusterFuzz build error by adding timeparser.data as a binary (#1208)
 - Fix an issue detected by OSSFuzz (#1203)
 - Support two-digit years in non-Gregorian calendars (#1187)
 - Refactored CI to run extras separately and test minimum versions of dependencies, replaced flake8 with ruff, fixed tests (#1248)
 - Set minimum versions for dependencies (#1248)
-- Limited ``numpy`` to 1.x when installing ``dateparser[fasttext]`` (#1248)
+- Limited ``numpy`` to 1.x when installing ``timeparser[fasttext]`` (#1248)
 
 
 1.2.0 (2023-11-17)
@@ -208,14 +208,14 @@ Breaking changes:
 * Drop support for Python 2.7 and pypy (see #727, #744, #748, #749, #754, #755, #758, #761, #763, #764, #777 and #783)
 * Now ``DateDataParser.get_date_data()`` returns a ``DateData`` object instead of a ``dict`` (see #778).
 * From now wrong ``settings`` are not silenced and raise ``SettingValidationError`` (see #797)
-* Now ``dateparser.parse()`` is deterministic and doesn't try previous locales. Also, ``DateDataParser.get_date_data()`` doesn't try the previous locales by default (see #781)
+* Now ``timeparser.parse()`` is deterministic and doesn't try previous locales. Also, ``DateDataParser.get_date_data()`` doesn't try the previous locales by default (see #781)
 * Remove the ``'base-formats'`` parser (see #721)
 * Extract the ``'no-spaces-time'`` parser from the ``'absolute-time'`` parser and make it an optional parser (see #786)
 * Remove ``numeral_translation_data`` (see #782)
 * Remove the undocumented ``SKIP_TOKENS_PARSER`` and ``FUZZY`` settings (see #728, #794)
 * Remove support for using strings in ``date_formats`` (see #726)
 * The undocumented ``ExactLanguageSearch`` class has been moved to the private scope and some internal methods have changed (see #778)
-* Changes in ``dateparser.utils``: ``normalize_unicode()`` doesn't accept ``bytes`` as input and ``convert_to_unicode`` has been deprecated (see #749)
+* Changes in ``timeparser.utils``: ``normalize_unicode()`` doesn't accept ``bytes`` as input and ``convert_to_unicode`` has been deprecated (see #749)
 
 New features:
 
@@ -241,7 +241,7 @@ Improvements:
 
 Improvements:
 
-* Rename ``scripts`` to ``dateparser_scripts`` to avoid name collisions with modules from other packages or projects (see #707)
+* Rename ``scripts`` to ``timeparser_scripts`` to avoid name collisions with modules from other packages or projects (see #707)
 
 
 0.7.5 (2020-06-10)
@@ -436,7 +436,7 @@ New features:
 * Support for custom date order preference using ``settings``.
 * Support for parsing generic relative dates in future.e.g. "tomorrow", "in two weeks", etc.
 * Added ``RELATIVE_BASE`` settings to set date context to any datetime in past or future.
-* Replaced ``dateutil.parser.parse`` with dateparser's own parser.
+* Replaced ``dateutil.parser.parse`` with timeparser's own parser.
 
 Improvements:
 

@@ -13,7 +13,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/scrapinghub/dateparser/issues.
+Report bugs at https://github.com/scrapinghub/timeparser/issues.
 
 If you are reporting a bug, please include:
 
@@ -52,7 +52,7 @@ build of the documentation.
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/scrapinghub/dateparser/issues.
+The best way to send feedback is to file an issue at https://github.com/scrapinghub/timeparser/issues.
 
 If you are proposing a feature:
 
@@ -64,18 +64,18 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-Ready to contribute? Here's how to set up `dateparser` for local development.
+Ready to contribute? Here's how to set up `timeparser` for local development.
 
-1. Fork the `dateparser` repo on GitHub.
+1. Fork the `timeparser` repo on GitHub.
 2. Clone your fork locally::
 
-    $ git clone git@github.com:your_name_here/dateparser.git
+    $ git clone git@github.com:your_name_here/timeparser.git
 
 3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper
 installed, this is how you set up your fork for local development::
 
-    $ mkvirtualenv dateparser
-    $ cd dateparser/
+    $ mkvirtualenv timeparser
+    $ cd timeparser/
     $ python setup.py develop
 
 4. Create a branch for local development::
@@ -109,10 +109,10 @@ Before you submit a pull request, check that it meets these guidelines:
    your new functionality into a function with a docstring, and add the
    feature to the list in *README.rst*.
 3. Check the pipelines (Github Actions) in the PR comments (or in
-   https://github.com/scrapinghub/dateparser/actions) and make sure that the
+   https://github.com/scrapinghub/timeparser/actions) and make sure that the
    tests pass for all supported Python versions.
 4. Check the new project coverage in the PR comments (or in
-   https://app.codecov.io/gh/scrapinghub/dateparser/pulls) and make sure that
+   https://app.codecov.io/gh/scrapinghub/timeparser/pulls) and make sure that
    it remained equal or higher than previously.
 5. Follow the core developers' advice which aims to ensure code's consistency
    regardless of the variety of approaches used by many contributors.
@@ -127,7 +127,7 @@ English is the primary language of Dateparser. Dates in all other languages are
 translated into English equivalents before they are parsed.
 
 The language data that Dateparser uses to parse dates is in
-``dateparser/data/date_translation_data``. For each supported language, there
+``timeparser/data/date_translation_data``. For each supported language, there
 is a Python file containing translation data.
 
 Each translation data Python files contains different kinds of translation data
@@ -138,24 +138,24 @@ etc.
 Translation data Python files are generated from the following sources:
 
 -   `Unicode CLDR <http://cldr.unicode.org/>`_ data in JSON format, located at
-    ``dateparser_data/cldr_language_data/date_translation_data``
+    ``timeparser_data/cldr_language_data/date_translation_data``
 
 -   Additional data from the Dateparser community in YAML format, located at
-    ``dateparser_data/supplementary_language_data/date_translation_data``
+    ``timeparser_data/supplementary_language_data/date_translation_data``
 
 If you wish to extend the data of an existing language, or add data for a new
 language, you must:
 
 #.  Edit or create the corresponding file within
-    ``dateparser_data/supplementary_language_data/date_translation_data``
+    ``timeparser_data/supplementary_language_data/date_translation_data``
 
     See existing files to learn how they are defined, and see
     :ref:`language-data-template` for details.
 
 #.  Regenerate the corresponding file within
-    ``dateparser/data/date_translation_data`` running the following script::
+    ``timeparser/data/date_translation_data`` running the following script::
 
-        dateparser_scripts/write_complete_data.py
+        timeparser_scripts/write_complete_data.py
 
 #.  Write tests that cover your changes
 
@@ -174,21 +174,21 @@ Updating the List of Supported Languages and Locales
 ----------------------------------------------------
 
 Whenever the content of
-``dateparser.data.languages_info.language_locale_dict`` is modified, use
-``dateparser_scripts/update_supported_languages_and_locales.py`` to update
+``timeparser.data.languages_info.language_locale_dict`` is modified, use
+``timeparser_scripts/update_supported_languages_and_locales.py`` to update
 the corresponding documentation table::
 
-    dateparser_scripts/update_supported_languages_and_locales.py
+    timeparser_scripts/update_supported_languages_and_locales.py
 
 
 Updating the Timezone Cache
 ----------------------------------------------------
 
 Whenever the content of
-``dateparser/timezones.py`` is modified you need to rebuild the timezone cache.
+``timeparser/timezones.py`` is modified you need to rebuild the timezone cache.
 
 Run this command:
-``BUILD_TZ_CACHE=1 python -c "import dateparser"``
+``BUILD_TZ_CACHE=1 python -c "import timeparser"``
 
 which should update
-``dateparser/data/dateparser_tz_cache.pkl``
+``timeparser/data/timeparser_tz_cache.pkl``

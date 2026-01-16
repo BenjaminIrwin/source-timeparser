@@ -5,8 +5,8 @@ import pytest
 from parameterized import param, parameterized
 from pytz import UnknownTimeZoneError, utc
 
-from dateparser.conf import settings
-from dateparser.utils import (
+from timeparser.conf import settings
+from timeparser.utils import (
     apply_timezone,
     apply_timezone_from_settings,
     find_date_separator,

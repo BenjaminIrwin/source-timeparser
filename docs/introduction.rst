@@ -1,5 +1,5 @@
 ==========================
-Introduction to dateparser
+Introduction to timeparser
 ==========================
 
 
@@ -17,10 +17,10 @@ Features
 Basic Usage
 ===========
 
-The most straightforward way is to use the `dateparser.parse <#dateparser.parse>`_ function,
+The most straightforward way is to use the `timeparser.parse <#timeparser.parse>`_ function,
 that wraps around most of the functionality in the module.
 
-.. automodule:: dateparser
+.. automodule:: timeparser
    :members: parse
    :noindex:
 
@@ -28,18 +28,18 @@ that wraps around most of the functionality in the module.
 Popular Formats
 ---------------
 
-    >>> import dateparser
-    >>> dateparser.parse('12/12/12')
+    >>> import timeparser
+    >>> timeparser.parse('12/12/12')
     datetime.datetime(2012, 12, 12, 0, 0)
-    >>> dateparser.parse('Fri, 12 Dec 2014 10:55:50')
+    >>> timeparser.parse('Fri, 12 Dec 2014 10:55:50')
     datetime.datetime(2014, 12, 12, 10, 55, 50)
-    >>> dateparser.parse('Martes 21 de Octubre de 2014')  # Spanish (Tuesday 21 October 2014)
+    >>> timeparser.parse('Martes 21 de Octubre de 2014')  # Spanish (Tuesday 21 October 2014)
     datetime.datetime(2014, 10, 21, 0, 0)
-    >>> dateparser.parse('Le 11 Décembre 2014 à 09:00')  # French (11 December 2014 at 09:00)
+    >>> timeparser.parse('Le 11 Décembre 2014 à 09:00')  # French (11 December 2014 at 09:00)
     datetime.datetime(2014, 12, 11, 9, 0)
-    >>> dateparser.parse('13 января 2015 г. в 13:34')  # Russian (13 January 2015 at 13:34)
+    >>> timeparser.parse('13 января 2015 г. в 13:34')  # Russian (13 January 2015 at 13:34)
     datetime.datetime(2015, 1, 13, 13, 34)
-    >>> dateparser.parse('1 เดือนตุลาคม 2005, 1:00 AM')  # Thai (1 October 2005, 1:00 AM)
+    >>> timeparser.parse('1 เดือนตุลาคม 2005, 1:00 AM')  # Thai (1 October 2005, 1:00 AM)
     datetime.datetime(2005, 10, 1, 1, 0)
 
 This will try to parse a date from the given string, attempting to
@@ -47,13 +47,13 @@ detect the language each time.
 
 You can specify the language(s), if known, using ``languages`` argument. In this case, given languages are used and language detection is skipped:
 
-    >>> dateparser.parse('2015, Ago 15, 1:08 pm', languages=['pt', 'es'])
+    >>> timeparser.parse('2015, Ago 15, 1:08 pm', languages=['pt', 'es'])
     datetime.datetime(2015, 8, 15, 13, 8)
 
 If you know the possible formats of the dates, you can
 use the ``date_formats`` argument:
 
-    >>> dateparser.parse('22 Décembre 2010', date_formats=['%d %B %Y'])
+    >>> timeparser.parse('22 Décembre 2010', date_formats=['%d %B %Y'])
     datetime.datetime(2010, 12, 22, 0, 0)
 
 
@@ -97,7 +97,7 @@ For more on date order, please look at :ref:`settings`.
 Timezone and UTC Offset
 -----------------------
 
-By default, `dateparser` returns tzaware `datetime` if timezone is present in date string. Otherwise, it returns a naive `datetime` object.
+By default, `timeparser` returns tzaware `datetime` if timezone is present in date string. Otherwise, it returns a naive `datetime` object.
 
     >>> parse('January 12, 2012 10:00 PM EST')
     datetime.datetime(2012, 1, 12, 22, 0, tzinfo=<StaticTzInfo 'EST'>)
@@ -164,7 +164,7 @@ For more on timezones, please look at :ref:`settings`.
 Incomplete Dates
 ----------------
 
-    >>> from dateparser import parse
+    >>> from timeparser import parse
     >>> parse('December 2015')  # default behavior
     datetime.datetime(2015, 12, 16, 0, 0)
     >>> parse('December 2015', settings={'PREFER_DAY_OF_MONTH': 'last'})
@@ -180,14 +180,14 @@ Incomplete Dates
     >>> parse('August', settings={'PREFER_DATES_FROM': 'past'})
     datetime.datetime(2015, 8, 15, 0, 0)
 
-    >>> import dateparser
-    >>> dateparser.parse("2015") # default behavior
+    >>> import timeparser
+    >>> timeparser.parse("2015") # default behavior
     datetime.datetime(2015, 3, 27, 0, 0)
-    >>> dateparser.parse("2015", settings={"PREFER_MONTH_OF_YEAR": "last"})
+    >>> timeparser.parse("2015", settings={"PREFER_MONTH_OF_YEAR": "last"})
     datetime.datetime(2015, 12, 27, 0, 0)
-    >>> dateparser.parse("2015", settings={"PREFER_MONTH_OF_YEAR": "first"})
+    >>> timeparser.parse("2015", settings={"PREFER_MONTH_OF_YEAR": "first"})
     datetime.datetime(2015, 1, 27, 0, 0)
-    >>> dateparser.parse("2015", settings={"PREFER_MONTH_OF_YEAR": "current"})
+    >>> timeparser.parse("2015", settings={"PREFER_MONTH_OF_YEAR": "current"})
     datetime.datetime(2015, 3, 27, 0, 0)
 
 You can also ignore parsing incomplete dates altogether by setting `STRICT_PARSING` flag as follows:
@@ -206,7 +206,7 @@ If you need more control over what is being parser check the :ref:`settings` sec
 Dependencies
 ============
 
-`dateparser` relies on following libraries in some ways:
+`timeparser` relies on following libraries in some ways:
 
   * dateutil_'s module ``relativedelta`` for its freshness parser.
   * convertdate_ to convert *Jalali* dates to *Gregorian*.
@@ -228,23 +228,23 @@ You can check the supported locales by visiting the ":ref:`supported-locales`" s
 Supported Calendars
 ===================
 
-Apart from the Georgian calendar, `dateparser` supports the `Persian Jalali calendar` and the `Hijri/Islami calendar`
+Apart from the Georgian calendar, `timeparser` supports the `Persian Jalali calendar` and the `Hijri/Islami calendar`
 
 To be able to use them you need to install the `calendar` extra by typing:
 
-    pip install dateparser[calendars]
+    pip install timeparser[calendars]
 
 
 * Example using the `Persian Jalali calendar`. For more information, refer to `Persian Jalali Calendar <https://en.wikipedia.org/wiki/Iranian_calendars#Zoroastrian_calendar>`_.
 
-    >>> from dateparser.calendars.jalali import JalaliCalendar
+    >>> from timeparser.calendars.jalali import JalaliCalendar
     >>> JalaliCalendar('جمعه سی ام اسفند ۱۳۸۷').get_date()
     DateData(date_obj=datetime.datetime(2009, 3, 20, 0, 0), period='day', locale=None)
 
 
 * Example using the `Hijri/Islamic Calendar`. For more information, refer to `Hijri Calendar <https://en.wikipedia.org/wiki/Islamic_calendar>`_.
 
-    >>> from dateparser.calendars.hijri import HijriCalendar
+    >>> from timeparser.calendars.hijri import HijriCalendar
     >>> HijriCalendar('17-01-1437 هـ 08:30 مساءً').get_date()
     DateData(date_obj=datetime.datetime(2015, 10, 30, 20, 30), period='day', locale=None)
 

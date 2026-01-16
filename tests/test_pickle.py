@@ -1,8 +1,8 @@
 import pickle
 from datetime import datetime
 
-from dateparser import parse
-from dateparser.timezone_parser import StaticTzInfo
+from timeparser import parse
+from timeparser.timezone_parser import StaticTzInfo
 from tests import BaseTestCase
 
 

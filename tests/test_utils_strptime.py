@@ -5,7 +5,7 @@ import warnings
 
 from parameterized import param, parameterized
 
-from dateparser.utils.strptime import strptime
+from timeparser.utils.strptime import strptime
 from tests import BaseTestCase
 
 

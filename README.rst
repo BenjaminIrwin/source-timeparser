@@ -4,8 +4,8 @@
 
     <h1 align="center">
         <br/>
-        <a href="https://github.com/scrapinghub/dateparser">
-            <img src="https://raw.githubusercontent.com/scrapinghub/dateparser/master/artwork/dateparser-logo.png" alt="Dateparser" width="500">
+        <a href="https://github.com/scrapinghub/timeparser">
+            <img src="https://raw.githubusercontent.com/scrapinghub/timeparser/master/artwork/timeparser-logo.png" alt="Dateparser" width="500">
         </a>
         <br/>
     </h1>
@@ -13,20 +13,20 @@
     <h3 align="center">Python parser for human readable dates</h4>
 
     <p align="center">
-        <a href="https://pypi.python.org/pypi/dateparser">
-            <img src="https://img.shields.io/pypi/dm/dateparser.svg" alt="PyPI - Downloads">
+        <a href="https://pypi.python.org/pypi/timeparser">
+            <img src="https://img.shields.io/pypi/dm/timeparser.svg" alt="PyPI - Downloads">
         </a>
-        <a href="https://pypi.python.org/pypi/dateparser">
-            <img src="https://img.shields.io/pypi/v/dateparser.svg" alt="PypI - Version">
+        <a href="https://pypi.python.org/pypi/timeparser">
+            <img src="https://img.shields.io/pypi/v/timeparser.svg" alt="PypI - Version">
         </a>
-        <a href="https://codecov.io/gh/scrapinghub/dateparser">
-            <img src="https://codecov.io/gh/scrapinghub/dateparser/branch/master/graph/badge.svg" alt="Code Coverage">
+        <a href="https://codecov.io/gh/scrapinghub/timeparser">
+            <img src="https://codecov.io/gh/scrapinghub/timeparser/branch/master/graph/badge.svg" alt="Code Coverage">
         </a>
-        <a href="https://github.com/scrapinghub/dateparser/actions">
-            <img src="https://github.com/scrapinghub/dateparser/workflows/Build/badge.svg" alt="Github - Build">
+        <a href="https://github.com/scrapinghub/timeparser/actions">
+            <img src="https://github.com/scrapinghub/timeparser/workflows/Build/badge.svg" alt="Github - Build">
         </a>
-        <a href="https://dateparser.readthedocs.org/en/latest/?badge=latest">
-            <img src="https://readthedocs.org/projects/dateparser/badge/?version=latest" alt="Readthedocs - Docs">
+        <a href="https://timeparser.readthedocs.org/en/latest/?badge=latest">
+            <img src="https://readthedocs.org/projects/timeparser/badge/?version=latest" alt="Readthedocs - Docs">
         </a>
     </p>
 
@@ -47,16 +47,16 @@ Key Features
    relative dates (``"two weeks ago"`` or ``"tomorrow"``), timestamps,
    etc.
 -  Support for more than `200 language
-   locales <https://dateparser.readthedocs.io/en/latest/supported_locales.html>`__.
+   locales <https://timeparser.readthedocs.io/en/latest/supported_locales.html>`__.
 -  Language autodetection
 -  Customizable behavior through
-   `settings <https://dateparser.readthedocs.io/en/latest/settings.html>`__.
+   `settings <https://timeparser.readthedocs.io/en/latest/settings.html>`__.
 -  Support for `non-Gregorian calendar
-   systems <https://dateparser.readthedocs.io/en/latest/introduction.html#supported-calendars>`__.
+   systems <https://timeparser.readthedocs.io/en/latest/introduction.html#supported-calendars>`__.
 -  Support for dates with timezones abbreviations or UTC offsets
    (``"August 14, 2015 EST"``, ``"21 July 2013 10:15 pm +0500"``...)
 -  `Search
-   dates <https://dateparser.readthedocs.io/en/latest/introduction.html#search-for-dates-in-longer-chunks-of-text>`__
+   dates <https://timeparser.readthedocs.io/en/latest/introduction.html#search-for-dates-in-longer-chunks-of-text>`__
    in longer texts.
 -  Time span detection for expressions like "past month", "last week".
 
@@ -64,83 +64,83 @@ Online demo
 -----------
 
 Do you want to try it out without installing any dependency? Now you can test
-it quickly by visiting `this online demo <https://dateparser-demo.netlify.app/>`__!
+it quickly by visiting `this online demo <https://timeparser-demo.netlify.app/>`__!
 
 
 
 How To Use
 ----------
 
-The most straightforward way to parse dates with **dateparser** is to
-use the ``dateparser.parse()`` function, that wraps around most of the
+The most straightforward way to parse dates with **timeparser** is to
+use the ``timeparser.parse()`` function, that wraps around most of the
 functionality of the module.
 
 .. code:: python
 
-    >>> import dateparser
+    >>> import timeparser
 
-    >>> dateparser.parse('Fri, 12 Dec 2014 10:55:50')
+    >>> timeparser.parse('Fri, 12 Dec 2014 10:55:50')
     datetime.datetime(2014, 12, 12, 10, 55, 50)
 
-    >>> dateparser.parse('1991-05-17')
+    >>> timeparser.parse('1991-05-17')
     datetime.datetime(1991, 5, 17, 0, 0)
 
-    >>> dateparser.parse('In two months')  # today is 1st Aug 2020
+    >>> timeparser.parse('In two months')  # today is 1st Aug 2020
     datetime.datetime(2020, 10, 1, 11, 12, 27, 764201)
 
-    >>> dateparser.parse('1484823450')  # timestamp
+    >>> timeparser.parse('1484823450')  # timestamp
     datetime.datetime(2017, 1, 19, 10, 57, 30)
 
-    >>> dateparser.parse('January 12, 2012 10:00 PM EST')
+    >>> timeparser.parse('January 12, 2012 10:00 PM EST')
     datetime.datetime(2012, 1, 12, 22, 0, tzinfo=<StaticTzInfo 'EST'>)
 
-As you can see, **dateparser** works with different date formats, but it
+As you can see, **timeparser** works with different date formats, but it
 can also be used directly with strings in different languages:
 
 .. code:: python
 
-    >>> dateparser.parse('Martes 21 de Octubre de 2014')  # Spanish (Tuesday 21 October 2014)
+    >>> timeparser.parse('Martes 21 de Octubre de 2014')  # Spanish (Tuesday 21 October 2014)
     datetime.datetime(2014, 10, 21, 0, 0)
 
-    >>> dateparser.parse('Le 11 Décembre 2014 à 09:00')  # French (11 December 2014 at 09:00)
+    >>> timeparser.parse('Le 11 Décembre 2014 à 09:00')  # French (11 December 2014 at 09:00)
     datetime.datetime(2014, 12, 11, 9, 0)
 
-    >>> dateparser.parse('13 января 2015 г. в 13:34')  # Russian (13 January 2015 at 13:34)
+    >>> timeparser.parse('13 января 2015 г. в 13:34')  # Russian (13 January 2015 at 13:34)
     datetime.datetime(2015, 1, 13, 13, 34)
 
-    >>> dateparser.parse('1 เดือนตุลาคม 2005, 1:00 AM')  # Thai (1 October 2005, 1:00 AM)
+    >>> timeparser.parse('1 เดือนตุลาคม 2005, 1:00 AM')  # Thai (1 October 2005, 1:00 AM)
     datetime.datetime(2005, 10, 1, 1, 0)
 
-    >>> dateparser.parse('yaklaşık 23 saat önce')  # Turkish (23 hours ago), current time: 12:46
+    >>> timeparser.parse('yaklaşık 23 saat önce')  # Turkish (23 hours ago), current time: 12:46
     datetime.datetime(2019, 9, 7, 13, 46)
 
-    >>> dateparser.parse('2小时前')  # Chinese (2 hours ago), current time: 22:30
+    >>> timeparser.parse('2小时前')  # Chinese (2 hours ago), current time: 22:30
     datetime.datetime(2018, 5, 31, 20, 30)
 
 You can control multiple behaviors by using the ``settings`` parameter:
 
 .. code:: python
 
-    >>> dateparser.parse('2014-10-12', settings={'DATE_ORDER': 'YMD'})
+    >>> timeparser.parse('2014-10-12', settings={'DATE_ORDER': 'YMD'})
     datetime.datetime(2014, 10, 12, 0, 0)
 
-    >>> dateparser.parse('2014-10-12', settings={'DATE_ORDER': 'YDM'})
+    >>> timeparser.parse('2014-10-12', settings={'DATE_ORDER': 'YDM'})
     datetime.datetime(2014, 12, 10, 0, 0)
 
-    >>> dateparser.parse('1 year', settings={'PREFER_DATES_FROM': 'future'})  # Today is 2020-09-23
+    >>> timeparser.parse('1 year', settings={'PREFER_DATES_FROM': 'future'})  # Today is 2020-09-23
     datetime.datetime(2021, 9, 23, 0, 0)
 
-    >>> dateparser.parse('tomorrow', settings={'RELATIVE_BASE': datetime.datetime(1992, 1, 1)})
+    >>> timeparser.parse('tomorrow', settings={'RELATIVE_BASE': datetime.datetime(1992, 1, 1)})
     datetime.datetime(1992, 1, 2, 0, 0)
 
 To see more examples on how to use the ``settings``, check the `settings
-section <https://dateparser.readthedocs.io/en/latest/settings.html>`__
+section <https://timeparser.readthedocs.io/en/latest/settings.html>`__
 in the docs.
 
 False positives
 ^^^^^^^^^^^^^^^
 
-**dateparser** will do its best to return a date, dealing with multiple formats and different locales.
+**timeparser** will do its best to return a date, dealing with multiple formats and different locales.
 For that reason it is important that the input is a valid date, otherwise it could return false positives.
 
 To reduce the possibility of receiving false positives, make sure that:
@@ -152,7 +152,7 @@ To reduce the possibility of receiving false positives, make sure that:
 On the other hand, if you want to exclude any of the default parsers
 (``timestamp``, ``relative-time``...) or change the order in which they
 are executed, you can do so through the
-`settings PARSERS <https://dateparser.readthedocs.io/en/latest/usage.html#handling-incomplete-dates>`_.
+`settings PARSERS <https://timeparser.readthedocs.io/en/latest/usage.html#handling-incomplete-dates>`_.
 
 Installation
 ------------
@@ -161,19 +161,19 @@ Dateparser supports Python >= 3.9. You can install it by doing:
 
 ::
 
-    $ pip install dateparser
+    $ pip install timeparser
 
 If you want to use the jalali or hijri calendar, you need to install the
 ``calendars`` extra:
 
 ::
 
-    $ pip install dateparser[calendars]
+    $ pip install timeparser[calendars]
 
 Common use cases
 ----------------
 
-**dateparser** can be used for a wide variety of purposes,
+**timeparser** can be used for a wide variety of purposes,
 but it stands out when it comes to:
 
 Consuming data from different sources:
@@ -211,4 +211,4 @@ You may also like...
 License
 -------
 
-`BSD3-Clause <https://github.com/scrapinghub/dateparser/blob/master/LICENSE>`__
+`BSD3-Clause <https://github.com/scrapinghub/timeparser/blob/master/LICENSE>`__

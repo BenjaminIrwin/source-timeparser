@@ -2,7 +2,7 @@ from datetime import datetime
 
 import pytest
 
-from dateparser.date import DateData
+from timeparser.date import DateData
 
 
 class TestDateData:

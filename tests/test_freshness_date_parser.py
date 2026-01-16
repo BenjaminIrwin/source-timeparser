@@ -17,10 +17,10 @@ from unittest.mock import Mock, patch
 from dateutil.relativedelta import relativedelta
 from parameterized import param, parameterized
 
-import dateparser
-from dateparser.conf import settings
-from dateparser.date import DateDataParser, freshness_date_parser
-from dateparser.utils import normalize_unicode
+import timeparser
+from timeparser.conf import settings
+from timeparser.date import DateDataParser, freshness_date_parser
+from timeparser.utils import normalize_unicode
 from tests import BaseTestCase
 
 
@@ -445,7 +445,7 @@ class TestFreshnessDateDataParser(BaseTestCase):
             param("2 giờ", ago={"hours": 2}, period="day"),
             param("2 tuần 3 ngày", ago={"weeks": 2, "days": 3}, period="day"),
             # following test unsupported, refer to discussion at:
-            # http://github.com/scrapinghub/dateparser/issues/33
+            # http://github.com/scrapinghub/timeparser/issues/33
             # param('1 năm 1 tháng 1 tuần 1 ngày 1 giờ 1 chút',
             #      ago={'years': 1, 'months': 1, 'weeks': 1, 'days': 1, 'hours': 1, 'minutes': 1},
             #      period='day'),
@@ -2469,7 +2469,7 @@ class TestFreshnessDateDataParser(BaseTestCase):
             }
         )
 
-        parser = dateparser.freshness_date_parser.FreshnessDateDataParser()
+        parser = timeparser.freshness_date_parser.FreshnessDateDataParser()
         timezone = (
             ZoneInfo(key="US/Eastern") if ZoneInfo else pytz.timezone("US/Eastern")
         )
@@ -2621,11 +2621,11 @@ class TestFreshnessDateDataParser(BaseTestCase):
 
         self.freshness_parser = Mock(wraps=freshness_date_parser)
 
-        dt_mock = Mock(wraps=dateparser.freshness_date_parser.datetime)
+        dt_mock = Mock(wraps=timeparser.freshness_date_parser.datetime)
         dt_mock.now = Mock(side_effect=self.now_with_timezone)
-        self.add_patch(patch("dateparser.freshness_date_parser.datetime", new=dt_mock))
+        self.add_patch(patch("timeparser.freshness_date_parser.datetime", new=dt_mock))
         self.add_patch(
-            patch("dateparser.date.freshness_date_parser", new=self.freshness_parser)
+            patch("timeparser.date.freshness_date_parser", new=self.freshness_parser)
         )
         self.parser = DateDataParser(settings=settings)
 

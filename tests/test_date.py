@@ -11,10 +11,10 @@ from unittest.mock import Mock, patch
 
 from parameterized import param, parameterized
 
-import dateparser
-from dateparser import date
-from dateparser.conf import Settings
-from dateparser.date import DateData
+import timeparser
+from timeparser import date
+from timeparser.conf import Settings
+from timeparser.date import DateData
 from tests import BaseTestCase
 
 
@@ -538,8 +538,8 @@ class TestParseWithFormatsFunction(BaseTestCase):
         datetime_mock.utcnow = Mock(return_value=now)
         datetime_mock.now = Mock(return_value=now)
         datetime_mock.today = Mock(return_value=now)
-        self.add_patch(patch("dateparser.date.datetime", new=datetime_mock))
-        self.add_patch(patch("dateparser.utils.datetime", new=datetime_mock))
+        self.add_patch(patch("timeparser.date.datetime", new=datetime_mock))
+        self.add_patch(patch("timeparser.utils.datetime", new=datetime_mock))
 
     def when_date_is_parsed_with_formats(
         self, date_string, date_formats, custom_settings=None
@@ -838,7 +838,7 @@ class TestDateDataParser(BaseTestCase):
         datetime_mock.utcnow = Mock(return_value=now)
         datetime_mock.now = Mock(return_value=now)
         datetime_mock.today = Mock(return_value=now)
-        self.add_patch(patch("dateparser.date.datetime", new=datetime_mock))
+        self.add_patch(patch("timeparser.date.datetime", new=datetime_mock))
 
     def given_parser(self, restrict_to_languages=None, **params):
         self.parser = date.DateDataParser(languages=restrict_to_languages, **params)
@@ -846,7 +846,7 @@ class TestDateDataParser(BaseTestCase):
     def given_local_tz_offset(self, offset):
         self.add_patch(
             patch.object(
-                dateparser.timezone_parser,
+                timeparser.timezone_parser,
                 "local_tz_offset",
                 new=timedelta(seconds=3600 * offset),
             )

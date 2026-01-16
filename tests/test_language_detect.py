@@ -8,14 +8,14 @@ from unittest.mock import Mock
 
 from parameterized import param, parameterized
 
-from dateparser import parse
-from dateparser.custom_language_detection.fasttext import (
+from timeparser import parse
+from timeparser.custom_language_detection.fasttext import (
     detect_languages as fast_text_detect_languages,
 )
-from dateparser.custom_language_detection.langdetect import (
+from timeparser.custom_language_detection.langdetect import (
     detect_languages as lang_detect_detect_languages,
 )
-from dateparser.date import DateDataParser
+from timeparser.date import DateDataParser
 
 detect_languages = Mock()
 detect_languages.return_value = ["en"]

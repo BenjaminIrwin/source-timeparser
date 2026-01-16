@@ -5,12 +5,12 @@ from io import StringIO
 import pytest
 from parameterized import param, parameterized
 
-from dateparser import parse
-from dateparser.conf import apply_settings, settings
-from dateparser.date import DateDataParser
-from dateparser.languages import Locale, default_loader
-from dateparser.languages.validation import LanguageValidator
-from dateparser.utils import normalize_unicode
+from timeparser import parse
+from timeparser.conf import apply_settings, settings
+from timeparser.date import DateDataParser
+from timeparser.languages import Locale, default_loader
+from timeparser.languages.validation import LanguageValidator
+from timeparser.utils import normalize_unicode
 from tests import BaseTestCase
 
 

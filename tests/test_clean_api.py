@@ -3,7 +3,7 @@ from datetime import date, datetime
 from parameterized import param, parameterized
 from pytz import utc
 
-import dateparser
+import timeparser
 from tests import BaseTestCase
 
 
@@ -186,15 +186,15 @@ class TestParseFunction(BaseTestCase):
         self.then_date_was_not_parsed()
 
     def when_date_is_parsed_with_defaults(self, date_string):
-        self.result = dateparser.parse(date_string)
+        self.result = timeparser.parse(date_string)
 
     def when_date_is_parsed(self, date_string, languages=None, locales=None):
-        self.result = dateparser.parse(
+        self.result = timeparser.parse(
             date_string, languages=languages, locales=locales
         )
 
     def when_date_is_parsed_with_settings(self, date_string, settings=None):
-        self.result = dateparser.parse(date_string, settings=settings)
+        self.result = timeparser.parse(date_string, settings=settings)
 
     def when_date_is_parsed_with_args_and_settings(
         self,
@@ -205,7 +205,7 @@ class TestParseFunction(BaseTestCase):
         date_formats=None,
         settings=None,
     ):
-        self.result = dateparser.parse(
+        self.result = timeparser.parse(
             date_string,
             languages=languages,
             locales=locales,
